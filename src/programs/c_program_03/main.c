@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
   int pos_x = 0;
   int pos_y = 0;
   int bomb_num = 0;
-
+  int score = 0;
   char arr[ARR_SIZE][ARR_SIZE];
   fill_arr(arr);
   print_arr(arr);
@@ -58,10 +58,11 @@ int main(int argc, char **argv) {
   if (bomb_arr[pos_x][pos_y] != 'B'){
   arr[pos_x][pos_y] = 'A';
   print_arr(arr);
+  score++;
   } else {
     arr[pos_x][pos_y] = 'B';
     print_arr(arr);
-    printf("YOU HIT A BOMB AND LOST\n");
+    printf("YOU HIT A BOMB AND YOUR SCORE WAS: %d\n", score);
     return 0;
   }
 
