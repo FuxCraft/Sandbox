@@ -16,13 +16,15 @@ int main(int argc, char **argv) {
 
   printf("Sorted Numbers: \n");
 
+  //int biggest = arr[0];
+
   for(int j = 0; j < ARR_SIZE; j++){
   for(int i = 0; i < ARR_SIZE - 1; i++){
-    int temp = 0;
-    if (arr[i] > arr[i + 1]){
+    int temp = 0; 
+    if(arr[j] < arr[i]){
       temp = arr[i];
-      arr[i] = arr[i + 1];
-      arr[i + 1] = temp;
+      arr[i] = arr[j];
+      arr[j] = temp;
     }
   }
 }
