@@ -1,40 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
-#define ARR_SIZE 100000
+#define SIZE 10
 
-int main(int argc, char **argv) {
-  
-  int arr[ARR_SIZE];
+int main() {
+    int numbers[SIZE];
+    int count = 0;
+    bool exists;
+    
+    // Seed the random number generator
+    srand(time(NULL));
 
-  srand(time(0));
+    while (count < SIZE) {
+        int num = rand() % 10 + 1; // Random number between 1 and 100
+        exists = false;
 
-  for(int i = 0; i < ARR_SIZE; i++){
-    arr[i] = rand() % 10000;
-  }
+        // Check for duplicates
+        for (int i = 0; i < count; i++) {
+            if (numbers[i] == num) {
+                exists = true;
+                break;
+            }
+        }
 
-  printf("Sorted Numbers: \n");
-
-  //int biggest = arr[0];
-
-  for(int j = 0; j < ARR_SIZE; j++){
-  for(int i = 0; i < ARR_SIZE - 1; i++){
-    int temp = 0; 
-    if(arr[j] < arr[i]){
-      temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
+        if (!exists) {
+            numbers[count] = num;
+            count++;
+        }
     }
-  }
-}
 
-for(int i = 0; i < ARR_SIZE; i++){
-  printf("%d;", arr[i]);
-}
+    // Print the array
+    printf("Random unique numbers:\n");
+    for (int i = 0; i < SIZE; i++) {
+        printf("%d ", numbers[i]);
+    }
+    printf("\n");
 
-
-  
-
-  return 0;
+    return 0;
 }
