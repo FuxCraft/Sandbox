@@ -1,33 +1,65 @@
+// --------------------------------------------------------------------------------
+// Author: Fuchs Simon
+// Description: Lotto Number Generator
+// --------------------------------------------------------------------------------
+// History:
+//
+// <date YYYY/MM/DD>: <user> -- <description of change>
+// ..
+// --------------------------------------------------------------------------------
+
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-// Function that returns true if array is
-// sorted in non-decreasing order.
-int arraySortedOrNot(int arr[], int n)
+#define ARR_SIZE 6
+
+int check_double(int arr[ARR_SIZE])
 {
-    // Array has one or no element
-    if (n == 0 || n == 1)
-        return 1;
-
-    for (int i = 1; i < n; i++) {
-        // Unsorted pair found
-        if (arr[i - 1] > arr[i])
-            return 0;
+    for (int i = 0; i < ARR_SIZE; i++)
+    {
+        for (int j = 0; j < ARR_SIZE; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                return 0;
+            }
+        }
     }
-
-    // No unsorted pair found
     return 1;
 }
 
-// Driver code
 int main()
 {
-    int arr[] = { 24, 23, 23, 45, 78, 88 };
-    int n = sizeof(arr) / sizeof(arr[0]);
+    srand(time(0));
 
-    if (arraySortedOrNot(arr, n))
-        printf("Yes\n");
-    else
-        printf("No\n");
+    int arr[ARR_SIZE];
+    int num_of_tips = 0;
+
+    printf("How many Lotto Numbers do you want?\n");
+    scanf("%d", &num_of_tips);
+
+    for (int j = 0; j < num_of_tips; j++)
+    {
+        for (int i = 0; i < ARR_SIZE; i++)
+        {
+            arr[i] = rand() % 49;
+        }
+
+        if (check_double(arr))
+        {
+            for (int i = 0; i < ARR_SIZE; i++)
+            {
+                printf("%d; ", arr[i]);
+            }
+        }
+        else
+        {
+            j--;
+        }
+
+        printf("\n");
+    }
 
     return 0;
 }

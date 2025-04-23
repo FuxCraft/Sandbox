@@ -21,18 +21,14 @@ void shuffle(int *array)
 
 int arraySortedOrNot(int arr[], int n)
 {
-  // Array has one or no element
   if (n == 0 || n == 1)
     return 1;
 
   for (int i = 1; i < n; i++)
   {
-    // Unsorted pair found
     if (arr[i - 1] > arr[i])
       return 0;
   }
-
-  // No unsorted pair found
   return 1;
 }
 
@@ -62,6 +58,7 @@ int main(int argc, char **argv)
       {
         printf("%d; ", arr[i]);
       }
+      printf("sorted\n");
       return 0;
     }
     else
