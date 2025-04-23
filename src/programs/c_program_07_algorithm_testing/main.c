@@ -54,8 +54,12 @@ int main()
 {
     char char_arr_2d_grid[ARR_SIZE][ARR_SIZE];
     int32_t int_arr_2d_grid[ARR_SIZE][ARR_SIZE];
+    int32_t int_arr_calc[ARR_SIZE*ARR_SIZE][ARR_SIZE*ARR_SIZE];
     char grid_letter = ' ';
     size_t counter = 0;
+
+
+
 
     define_2d_int_grid(int_arr_2d_grid, counter);
     for (size_t x = 0; x < ARR_SIZE; x++)
@@ -74,6 +78,21 @@ int main()
         }
         printf("\n");
     }
+    for (size_t x = 0; x < ARR_SIZE; x++)
+    {
+        for (size_t i = 0; i < ARR_SIZE; i++)
+        {
+            for (size_t j = 0; j < ARR_SIZE; j++)
+            {
+                
+
+
+            }
+            
+        }
+        
+    }
+
 
     return 0;
 }
