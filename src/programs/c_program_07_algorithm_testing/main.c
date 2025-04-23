@@ -84,13 +84,22 @@ int main()
         {
             for (size_t j = 0; j < ARR_SIZE; j++)
             {
-                
+                int_arr_calc[x][j] = int_arr_2d_grid[i][j];
 
 
             }
             
         }
         
+    }
+
+    for (size_t i = 0; i < ARR_SIZE*ARR_SIZE; i++)
+    {
+        for (size_t j = 0; j < ARR_SIZE*ARR_SIZE; j++)
+        {
+            printf(" %d ", int_arr_calc[i][j]);
+        }
+        printf("\n");
     }
 
 
