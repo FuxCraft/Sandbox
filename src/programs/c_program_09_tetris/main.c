@@ -14,54 +14,51 @@
 #include <inttypes.h>
 #include <unistd.h>
 
-#define ARR_SIZE 10
+#define ARR_SIZE 9
+#define BLOCK_SIZE 3
 
-void arr_define(char arr[ARR_SIZE][ARR_SIZE])
+void arr_define(char arr[][ARR_SIZE])
 {
-    for (int i = 0; i < ARR_SIZE; i++)
+    for (size_t i = 0; i < ARR_SIZE; i++)
     {
-        for (int j = 0; j < ARR_SIZE; j++)
+        for (size_t j = 0; j < ARR_SIZE; j++)
         {
-            arr[i][j] = 'O';
+            if(arr[i+1][j+1] != 'X'){
+                arr[i][j] = 'O';
+            }
         }
     }
+}
+
+void arr_print(char arr[][ARR_SIZE]){
+    for (size_t i = 0; i < ARR_SIZE; i++)
+            {
+                for (size_t j = 0; j < ARR_SIZE; j++)
+                {
+                    printf("%c", arr[i][j]);
+                    printf(" ");
+                }
+                printf("\n");
+            }
 }
 
     int main()
     {
         char arr_grid[ARR_SIZE][ARR_SIZE];
 
-        for (int i = 0; i < ARR_SIZE; i++)
-        {
-            for (int j = 0; j < ARR_SIZE; j++)
-            {
-                arr_grid[i][j] = 'O';
-            }
-        }
-        for (int k = 0; k < ARR_SIZE; k++)
+        for (size_t j = 0; j < 1000; j++){
+        for (size_t k = 0; k < ARR_SIZE && arr_grid[k+1][3] != 'X'; k++)
         {
 
-            for (int a = 0; a < ARR_SIZE; a++)
-            {
-                for (int b = 0; b < ARR_SIZE; b++)
-                {
-                    arr_grid[a][b] = 'O';
-                }
+            arr_define(arr_grid);
+            for (size_t i = 3; i < BLOCK_SIZE*2; i++){
+            arr_grid[k][i] = 'X';
             }
-            arr_grid[k][1] = 'X';
-            arr_grid[k][2] = 'X';
-            arr_grid[k][3] = 'X';
-
-            for (int i = 0; i < ARR_SIZE; i++)
-            {
-                for (int j = 0; j < ARR_SIZE; j++)
-                {
-                    printf("%c", arr_grid[i][j]);
-                    printf(" ");
-                }
-                printf("\n");
-            }
+            
+            arr_print(arr_grid);
+            
             printf("\n");
             sleep(1);
+        }
         }
     }
